@@ -4,9 +4,6 @@ const latestAnimalsUrl = "/last5"
 const totalAnimalsUrl = "/total"
 const topUsersUrl = "/highscore?limit=5"
 
-loop()
-setInterval(loop, 10000)
-
 async function loop() {
     const totalAnimals = await getData(totalAnimalsUrl)
     const totalAnimalsElement = document.getElementById('totalAnimals')
@@ -88,3 +85,6 @@ async function getData(url) {
     });
     
 }
+
+loop()
+setInterval(loop, 10000)
