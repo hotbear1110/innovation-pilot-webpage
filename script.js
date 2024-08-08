@@ -1,7 +1,8 @@
-const topAnimalsUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api/mostAnimals?limit=5"
-const latestAnimalsUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api/last5"
-const totalAnimalsUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api/total"
-const topUsersUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api/highscore?limit=5"
+const baseUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api"
+const topAnimalsUrl = "/mostAnimals?limit=5"
+const latestAnimalsUrl = "/last5"
+const totalAnimalsUrl = "/total"
+const topUsersUrl = "/highscore?limit=5"
 
 loop()
 setInterval(loop, 10000)
@@ -71,7 +72,7 @@ async function createLeaderboard() {
 }
 
 async function getData(url) {
-    return fetch(url)
+    return fetch(baseUrl + url)
     .then(response => {
         if (!response.ok) {
         throw new Error('Network response was not ok')
