@@ -49,6 +49,25 @@ h1 {
     width: auto;
 }
 
+.twothird-width {
+    width: 66%;
+}
+
+.onethird-width {
+    width: 33%;
+}
+
+.float-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+}  
+
 #latestAnimals {
     text-align: center;
     display: flex;

@@ -1,4 +1,5 @@
-const baseUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api"
+//const baseUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api"
+const baseUrl = location.protocol + "//" + window.location.host + "/api";
 //const baseUrl = "http://localhost:8080/api"
 const topAnimalsUrl = "/mostAnimals?limit=5"
 const latestAnimalsUrl = "/last5"
@@ -8,14 +9,21 @@ const topUsersUrl = "/highscore?limit=5"
 var total = 0
 var page = 0
 
+const urlParams = new URLSearchParams(window.location.search);
+const pageParam = urlParams.get('page');
+
 function changeCont() {
     if (page == 1) {
         page = 2
     } else {
         page = 1
     }
-    document.getElementById('container_1').hidden = page == 1
-    document.getElementById('container_2').hidden = page != 1
+    setPage()
+}
+
+function setPage() {
+    document.getElementById('container_1').hidden = page != 1
+    document.getElementById('container_2').hidden = page == 1
 }
 
 async function loop() {
@@ -35,8 +43,9 @@ async function loop() {
     }
 }
 
+var topAnimals = []
 async function createTopAnimals() {
-    const topAnimals = await getData(topAnimalsUrl)
+    topAnimals = await getData(topAnimalsUrl)
     const topAnimalsElement = document.getElementById('topAnimals')
     topAnimalsElement.innerHTML = "";
 
@@ -47,6 +56,8 @@ async function createTopAnimals() {
 
         topAnimalsElement.appendChild(animalHeader);
     })
+
+    drawChart()
 }
 
 async function createLatestAnimals() {
@@ -102,7 +113,7 @@ async function getData(url) {
             return response.json()
         })
         .then(data => {
-            console.log(data)
+            // console.log(data)
             return data
         })
         .catch(error => {
@@ -111,7 +122,39 @@ async function getData(url) {
 
 }
 
+
+function drawChart() {
+
+    // Set Data
+    const data = [['Dyregruppe', 'Antal']];
+
+    topAnimals.forEach(animal => {
+        data.push([animal.Username, animal.Score])
+    })
+
+    var arrayData = google.visualization.arrayToDataTable(data)
+
+    // Set Options
+    const options = {
+        title: 'Dyregrupper'
+    };
+
+    // Draw
+    const chart = new google.visualization.PieChart(document.getElementById('topAnimalsChart'));
+    chart.draw(arrayData, options);
+
+}
+
+
 loop()
-changeCont()
-setInterval(loop, 2500)
-setInterval(changeCont, 10000)
+setInterval(loop, 5000)
+
+google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
+
+if (pageParam == null) {
+    setInterval(changeCont, 10000)
+} else {
+    page = pageParam
+}
+setPage()
