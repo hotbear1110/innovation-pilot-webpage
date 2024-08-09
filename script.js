@@ -1,8 +1,22 @@
 const baseUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api"
+//const baseUrl = "http://localhost:8080/api"
 const topAnimalsUrl = "/mostAnimals?limit=5"
 const latestAnimalsUrl = "/last5"
 const totalAnimalsUrl = "/total"
 const topUsersUrl = "/highscore?limit=5"
+
+var total = 0
+var page = 0
+
+function changeCont() {
+    if (page == 1) {
+        page = 2
+    } else {
+        page = 1
+    }
+    document.getElementById('container_1').hidden = page == 1
+    document.getElementById('container_2').hidden = page != 1
+}
 
 async function loop() {
     const totalAnimals = await getData(totalAnimalsUrl)
@@ -10,11 +24,15 @@ async function loop() {
 
     totalAnimalsElement.textContent = totalAnimals
 
-    createTopAnimals()
+    if (total != totalAnimals) {
+        total = totalAnimals
 
-    createLatestAnimals()
+        createTopAnimals()
 
-    createLeaderboard()
+        createLatestAnimals()
+
+        createLeaderboard()
+    }
 }
 
 async function createTopAnimals() {
@@ -23,7 +41,7 @@ async function createTopAnimals() {
     topAnimalsElement.innerHTML = "";
 
 
-    topAnimals.HighScore.forEach(animal => {
+    topAnimals.forEach(animal => {
         const animalHeader = document.createElement("h2")
         animalHeader.append(animal.Username + ": " + animal.Score)
 
@@ -33,34 +51,41 @@ async function createTopAnimals() {
 
 async function createLatestAnimals() {
     const latestAnimals = await getData(latestAnimalsUrl)
-    const leaderboardElement = document.getElementById('latestAnimals')
-    leaderboardElement.innerHTML = "";
+    const latestAnimalElement = document.getElementById('latestAnimals')
+    latestAnimalElement.innerHTML = "";
 
-
-    latestAnimals.Last5.forEach(animal => {
+    latestAnimals.forEach(animal => {
         const animalElement = document.createElement("div")
 
         const animalHeader = document.createElement("h2")
-        animalHeader.append(animal.acceptedVernacularName)
+        if (animal.acceptedVernacularName != "") {
+            animalHeader.append(animal.acceptedVernacularName)
+        } else if (animal.scientificName != "") {
+            animalHeader.append(animal.scientificName)
+        } else {
+            animalHeader.append("Ukendt Art")
+        }
 
         let animalIMG = new Image();
-        animalIMG.src = animal.medias[0].url
+        if (animal.medias.length > 0) {
+            animalIMG.src = animal.medias[0].url
+        }
         animalIMG.width = 300
 
         animalElement.appendChild(animalHeader)
         animalElement.appendChild(animalIMG)
 
-        leaderboardElement.appendChild(animalElement);
+        latestAnimalElement.appendChild(animalElement);
     })
 }
 
 async function createLeaderboard() {
-    const topUsers= await getData(topUsersUrl)
+    const topUsers = await getData(topUsersUrl)
     const topUsersElement = document.getElementById('leaderboard')
     topUsersElement.innerHTML = "";
 
 
-    topUsers.HighScore.forEach(user => {
+    topUsers.forEach(user => {
         const userHeader = document.createElement("h2")
         userHeader.append(user.Username + " | Dyr fundet: " + user.Score)
 
@@ -70,21 +95,23 @@ async function createLeaderboard() {
 
 async function getData(url) {
     return fetch(baseUrl + url)
-    .then(response => {
-        if (!response.ok) {
-        throw new Error('Network response was not ok')
-        }
-        return response.json()
-    })
-    .then(data => {
-        console.log(data)
-        return data
-    })
-    .catch(error => {
-        console.error('Error:', error)
-    });
-    
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json()
+        })
+        .then(data => {
+            console.log(data)
+            return data
+        })
+        .catch(error => {
+            console.error('Error:', error)
+        });
+
 }
 
 loop()
-setInterval(loop, 10000)
+changeCont()
+setInterval(loop, 2500)
+setInterval(changeCont, 10000)

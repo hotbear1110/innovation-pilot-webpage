@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Tracker</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+
 <body>
 
-<h1>Dyr fundet i alt: <span id="totalAnimals"></span></h1>
+  <header>
+    <h1>Animal Tracker</h1>
+  </header>
 
-<div id="topAnimals">
+  <div class="container" id="container_1">
+    <div class="section full-width">
+      <h1>Seneste fund:</h1>
+      <div id="latestAnimals"></div>
+    </div>
+  </div>
 
-</div>
+  <div class="container" id="container_2">
+    <div class="top-container">
+      <div class="section">
+        <h1>Dyr fundet i alt: <span id="totalAnimals"></span></h1>
+        <div id="topAnimals"></div>
+      </div>
 
-<h1>Seneste fund:</h1>
+      <div class="section">
+        <h1>Leaderboard:</h1>
+        <div id="leaderboard"></div>
+      </div>
+    </div>
+  </div>
 
-<div id="latestAnimals">
-</div>
-
-<h1>Leaderboard:</h1>
-
-
-<div id="leaderboard">
-
-</div>
-
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
-</html>
 
+</html>
