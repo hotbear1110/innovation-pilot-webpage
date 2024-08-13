@@ -1,6 +1,5 @@
-const baseUrl =
-  "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api"
-//const baseUrl = location.protocol + "//" + window.location.host + "/api";
+//const baseUrl = "https://ipbackendcontainer.thankfulcliff-61bbdc66.westeurope.azurecontainerapps.io/api"
+const baseUrl = location.protocol + "//" + window.location.host + "/api";
 //const baseUrl = "http://localhost:8080/api"
 const topAnimalsUrl = "/mostAnimals?limit=5"
 const latestAnimalsUrl = "/last5"
