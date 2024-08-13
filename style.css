@@ -1,83 +1,101 @@
+html,
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
 }
 
 h1 {
-    margin: 20px 0;
-    color: #333;
+  margin: 20px 0;
+  color: #333;
 }
 
 .container {
-    width: 95%;
-    max-width: 1800px;
-    background-color: white;
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+  width: 95%;
+  max-width: 1800px;
+  background-color: white;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .section {
-    margin: 10px 0;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+  margin: 10px 0;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .top-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .full-width {
-    width: auto;
+  width: auto;
 }
 
 .twothird-width {
-    width: 66%;
+  width: 66%;
 }
 
 .onethird-width {
-    width: 33%;
+  width: 33%;
 }
 
 .float-container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .float-child {
-    width: 50%;
-    float: left;
-    padding: 20px;
-}  
+  width: 50%;
+  float: left;
+  padding: 20px;
+}
 
 #latestAnimals {
-    text-align: center;
-    display: flex;
-    overflow-x: auto;
-    justify-content: space-between;
+  text-align: center;
+  display: flex;
+  overflow-x: auto;
+  justify-content: space-between;
 }
 
 .leaderboard-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+#qr {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+#qr h1 {
+  margin: 0%;
+  align-self: center;
 }

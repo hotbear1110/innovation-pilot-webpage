@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal Tracker</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animal Tracker</title>
-  <link href="style.css" rel="stylesheet">
-  <script src="https://www.gstatic.com/charts/loader.js"></script>
-</head>
+  <body>
+    <header>
+      <h1>Animal Tracker</h1>
+    </header>
 
-<body>
-
-  <header>
-    <h1>Animal Tracker</h1>
-  </header>
-
-  <div class="container" id="container_1">
-    <div class="section full-width">
-      <h1>Seneste fund:</h1>
-      <div id="latestAnimals"></div>
-    </div>
-  </div>
-
-  <div class="container" id="container_2">
-    <div class="top-container">
-      <div class="section twothird-width">
-        <h1>Dyr fundet i alt: <span id="totalAnimals"></span></h1>
-        <div class="float-container">
-        <div id="topAnimals" class="float-child"></div>
-        <div id="topAnimalsChart" class="float-child" style="width:100%; max-width:1000px; height:400px;"></div>
-      </div>
-      </div>
-
-      <div class="section onethird-width">
-        <h1>Leaderboard:</h1>
-        <div id="leaderboard"></div>
+    <div class="container" id="container_1">
+      <div class="section full-width">
+        <h1>Seneste fund:</h1>
+        <div id="latestAnimals"></div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <div class="container" id="container_2">
+      <div class="top-container">
+        <div class="section twothird-width">
+          <h1>Dyr fundet i alt: <span id="totalAnimals"></span></h1>
+          <div class="float-container">
+            <div id="topAnimals" class="float-child"></div>
+            <div
+              id="topAnimalsChart"
+              class="float-child"
+              style="
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+              "
+            ></div>
+          </div>
+        </div>
 
+        <div class="section onethird-width">
+          <h1>Leaderboard:</h1>
+          <div id="leaderboard"></div>
+          <div id="qr">
+            <h1>Lær mere:</h1>
+            <img src="./about-qr.svg" width="300" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
