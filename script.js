@@ -80,9 +80,19 @@ async function createLatestAnimals() {
       animalIMG.src = animal.medias[0].url
     }
     animalIMG.width = 300
+    animalIMG.height = 400
+
+    const animalSpotter = document.createElement("p")
+    animalSpotter.append("Spottet af: " + animal.observers[0])
+
+    const animalTimeSpottet = document.createElement("p")
+    const date = new Date(animal.observationAt)
+    animalTimeSpottet.append("kl." + date.toLocaleTimeString())
 
     animalElement.appendChild(animalHeader)
     animalElement.appendChild(animalIMG)
+    animalElement.appendChild(animalSpotter)
+    animalElement.appendChild(animalTimeSpottet)
 
     latestAnimalElement.appendChild(animalElement)
   })

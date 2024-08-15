@@ -123,3 +123,7 @@ h1 {
   margin: 0%;
   align-self: center;
 }
+
+img {
+  object-fit: cover;
+}
