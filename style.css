@@ -36,7 +36,6 @@ h1 {
   border-radius: 8px;
 }
 
-
 .aboutcontainer {
   width: 75%;
   max-width: 1800px;
@@ -55,47 +54,61 @@ h1 {
   border-radius: 8px;
 }
 
-.top-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.full-width {
-  width: auto;
-}
-
-.twothird-width {
-  width: 66%;
-}
-
-.onethird-width {
-  width: 33%;
-}
-
-.float-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.float-child {
-  width: 50%;
-  float: left;
-  padding: 20px;
-}
-
 #latestAnimals {
-  text-align: center;
   display: flex;
-  overflow-x: auto;
-  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+  flex-wrap: wrap;
 }
 
-.leaderboard-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #ccc;
+@media only screen and (min-width: 900px) {
+  .top-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .full-width {
+    width: auto;
+  }
+
+  .twothird-width {
+    width: 66%;
+    flex: 1;
+  }
+
+  .onethird-width {
+    width: 33%;
+    flex: 1;
+  }
+
+  .float-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+  }
+
+  .leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  #latestAnimals {
+    text-align: center;
+    display: flex;
+    overflow-x: auto;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
 }
 
 #qr {
