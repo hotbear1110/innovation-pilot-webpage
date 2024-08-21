@@ -6,7 +6,7 @@ const totalAnimalsUrl = "/total"
 const topUsersUrl = "/highscore?limit=5"
 
 var total = 0
-var page = 0
+var page = 1
 
 const urlParams = new URLSearchParams(window.location.search)
 const pageParam = urlParams.get("page")
