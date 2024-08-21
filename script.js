@@ -105,7 +105,7 @@ async function createLeaderboard() {
 
   topUsers.forEach((user) => {
     const userHeader = document.createElement("h2")
-    userHeader.append(user.Username + " | Dyr fundet: " + user.Score)
+    userHeader.append(user.Username + " | Fund: " + user.Score)
 
     topUsersElement.appendChild(userHeader)
   })
@@ -130,7 +130,7 @@ async function getData(url) {
 
 function drawChart() {
   // Set Data
-  const data = [["Dyregruppe", "Antal"]]
+  const data = [["Gruppe", "Antal"]]
 
   topAnimals.forEach((animal) => {
     data.push([animal.Username, animal.Score])
@@ -140,7 +140,7 @@ function drawChart() {
 
   // Set Options
   const options = {
-    title: "Dyregrupper",
+    title: "Grupper",
     width: isMobile() ? 250 : 500,
     height: isMobile() ? 250 : 500,
     chartArea: { width: "100%", height: "80%" },
